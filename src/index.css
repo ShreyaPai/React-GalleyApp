@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* This tells Tailwind v4 to look for the .dark class on parents */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}

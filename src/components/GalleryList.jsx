@@ -10,6 +10,7 @@ import SearchBar from "./shared/SearchBar";
 export default function GalleryList() {
   const { state, dispatch } = useContext(GalleryContext);
   const [searchQuery, setSearchQuery] = useState('')
+  const [filteredList, setFilteredList] = useState(GALLERY_DATA)
 
   function toggleView() {
     dispatch({ type: "CHANGE_VIEW" });
@@ -17,6 +18,11 @@ export default function GalleryList() {
 
   const triggerSearch = (val) => {
     setSearchQuery(val)
+    setFilteredList(filteredList.filter((data) => data.name.includes(val)));
+
+    if (val === '') {
+      setFilteredList(GALLERY_DATA)
+    }
   }
 
   let gallerClassName = "flex flex-col gap-4 max-w-2xl mx-auto";
@@ -42,11 +48,16 @@ export default function GalleryList() {
           />{" "}
         </button>
       </section>
-      <ul className={gallerClassName}>
+      {!searchQuery && <ul className={gallerClassName}>
         {GALLERY_DATA.map((data) => {
           return <li key={data.id}>{<GalleryCard galleryInfo={data} />}</li>;
         })}
-      </ul>
+      </ul>}
+      {searchQuery && <ul className={gallerClassName}>
+        {filteredList.map((data) => {
+          return <li key={data.id}>{<GalleryCard galleryInfo={data} />}</li>;
+        })}
+      </ul>}
     </div>
   );
 }

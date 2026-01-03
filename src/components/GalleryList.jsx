@@ -17,8 +17,9 @@ export default function GalleryList() {
   }
 
   const triggerSearch = (val) => {
+    const searchTxt = val.toLowerCase();
     setSearchQuery(val)
-    setFilteredList(filteredList.filter((data) => data.name.includes(val)));
+    setFilteredList(GALLERY_DATA.filter((data) => data.name.toLowerCase().includes(searchTxt)));
 
     if (val === '') {
       setFilteredList(GALLERY_DATA)

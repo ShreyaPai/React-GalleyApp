@@ -6,6 +6,7 @@ import listIcon from "../assets/listIcon.svg";
 import gridIcon from "../assets/gridIcon.svg";
 
 import { GalleryContext } from "../utils/GalleryReducer";
+import GalleryCard from "./shared/GalleryCard";
 
 export default function GalleryList() {
   const { state, dispatch } = useContext(GalleryContext);
@@ -39,7 +40,7 @@ export default function GalleryList() {
         {GALLERY_DATA.map((data) => {
           return (
             <li key={data.id}>
-              { state.view === "grid" ? <GridView galleryInfo={data} />: <ListView galleryInfo={data} /> }
+              { <GalleryCard galleryInfo={data} /> }
             </li>
           );
         })}

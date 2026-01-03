@@ -5,6 +5,7 @@
 - 💡 **Lightbox modal** (useRef + backdrop)
 - ❤️ **Favourites** add/remove (localStorage persist)
 - 📱 Fully responsive (Tailwind CSS)
+- Search functionality
 
 ## 🛠️ Tech Stack
 React 18+ | Context API | useReducer | Tailwind CSS
